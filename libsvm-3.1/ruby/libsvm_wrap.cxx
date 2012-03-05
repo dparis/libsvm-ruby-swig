@@ -4373,9 +4373,6 @@ _wrap_double_getitem(int argc, VALUE *argv, VALUE self) {
   } 
   arg2 = static_cast< size_t >(val2);
   result = (double)double_getitem(arg1,arg2);
-
-  printf("DEBUG DOUBLE_GETITEM: %f", result);
-
   vresult = SWIG_From_double(static_cast< double >(result));
   return vresult;
 fail:

@@ -2538,6 +2538,7 @@ double svm_predict_probability(
 	if ((model->param.svm_type == C_SVC || model->param.svm_type == NU_SVC) &&
 	    model->probA!=NULL && model->probB!=NULL)
 	{
+          printf("DEBUG: IN SVM_PREDICT_PROBABILITY\n");
 		int i;
 		int nr_class = model->nr_class;
 		double *dec_values = Malloc(double, nr_class*(nr_class-1)/2);
@@ -2557,6 +2558,9 @@ double svm_predict_probability(
 			}
 		multiclass_probability(nr_class,pairwise_prob,prob_estimates);
 
+                printf("\tPROB 1: %f", prob_estimates[0]);
+                printf("\tPROB 2: %f", prob_estimates[1]);
+
 		int prob_max_idx = 0;
 		for(i=1;i<nr_class;i++)
 			if(prob_estimates[i] > prob_estimates[prob_max_idx])
@@ -2568,6 +2572,8 @@ double svm_predict_probability(
 		return model->label[prob_max_idx];
 	}
 	else 
+          printf("DEBUG: MISSED THE MAIN PROB PREDICTION\n");
+
 		return svm_predict(model, x);
 }
 
