@@ -1828,7 +1828,6 @@ SWIG_AsVal_size_t (VALUE obj, size_t *val)
   }
 
   static double double_getitem(double *ary, size_t index) {
-    for(int i=0;i<2;printf("%f ",ary[i]), i++);
     return ary[index];
   }
   static void double_setitem(double *ary, size_t index, double value) {
@@ -4374,6 +4373,9 @@ _wrap_double_getitem(int argc, VALUE *argv, VALUE self) {
   } 
   arg2 = static_cast< size_t >(val2);
   result = (double)double_getitem(arg1,arg2);
+
+  printf("DEBUG DOUBLE_GETITEM: %f", result);
+
   vresult = SWIG_From_double(static_cast< double >(result));
   return vresult;
 fail:
