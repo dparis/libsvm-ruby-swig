@@ -1828,6 +1828,7 @@ SWIG_AsVal_size_t (VALUE obj, size_t *val)
   }
 
   static double double_getitem(double *ary, size_t index) {
+    for(int i=0;i<2;printf("%f ",ary[i]), i++);
     return ary[index];
   }
   static void double_setitem(double *ary, size_t index, double value) {
